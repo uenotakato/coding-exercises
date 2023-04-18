@@ -1,6 +1,8 @@
 data {
   int<lower=0> N;
   int<lower=0> a;
+  real<lower=0> prior_a;
+  real<lower=0> prior_b;
 }
 
 parameters {
@@ -8,5 +10,6 @@ parameters {
 }
 
 model {
+  theta ~ beta(prior_a, prior_b);
   a ~ binomial(N, theta);
 }
